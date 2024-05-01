@@ -1,16 +1,53 @@
-<!-- ユーザーの詳細 -->
+  <!-- ユーザーの詳細 -->
+  <h2>User info</h2>
 <div>
-  <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
+  <table class="table">
+   <tbody><tr></tr>
+    <tr>
+      <th>name</th>
+      <th><%= @user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= @user.profile %></th>
+    </tr>
+    </tbody></table>
 </div>
+<div>
+    <%= link_to  edit_user_path(@user.id)  ,class:"btn btn-outline-secondary btn-block" do %>
+    <i class="fa-solid fa-user-gear"></i></i>
+    <% end %>
+
+</div>
+
 
 <!-- ユーザーの投稿一覧 -->
 
-<% @books.each do |book| %>
-<div>
-  <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
-  <p>title：<%= book.title%></p>
-  <p>opinion：<%= book.opinion %></p>
-  <p>ユーザーネーム：<%= book.user.name %></p>
-</div>
-<% end %>
+<h1>Books</h1>
+
+<div class="book-wrap">
+  <table class="table-box">
+    <thead>
+      <tr>
+        <th colspan="1"></th>
+        <th>Title</th>
+        <th>Opinion</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @books.each do |book| %>
+      <tr>
+         <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+         <td><%=link_to book.title, book_path(book.id) %></td>
+         <td><%= book.opinion %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  </div>
+
+
+

@@ -17,7 +17,6 @@ class BooksController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
-
   def new
    
   end

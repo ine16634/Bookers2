@@ -5,43 +5,74 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <script src="https://kit.fontawesome.com/e2c9f13b1d.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-      <% if user_signed_in? %>
+   <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container"> 
+      <a class="navbar-brand" href="/"><span>Bookers</span></a>
+      
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+     
+      <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
+       <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          
         <li>
-          <%= link_to "Home", "/" %>
+           <%= link_to user_path(current_user.id)  ,class:"nav-link text-light" do %>
+           <i class="fa-solid fa-house"></i>Home
+            <% end %>
         </li>
         <li>
-          <%= link_to "Users", "/" %>
+          <%= link_to  "/users" ,class:"nav-link text-light" do %>
+          <i class="fa-solid fa-users"></i>Users
+           <% end %>
         </li>
         <li>
-      <%= link_to 'マイページ', user_path(current_user.id) %>    </li>
-        <li>
-          <%= link_to "Books", "/books" %>
+          <%= link_to  "/books" ,class:"nav-link text-light" do %>
+          <i class="fa-solid fa-book-open"></i>Books
+           <% end %>
         </li>
         <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+          <%= link_to destroy_user_session_path, class:"nav-link text-light" ,method: :delete do %>
+          <i class="fa-solid fa-right-from-bracket"></i>Log out
+          <% end %>
         </li>
       <% else %>
         <li>
-          <%= link_to "Home", "/" %>
+          <%= link_to "/" ,class:"nav-link text-light" do %>
+           <i class="fa-solid fa-house"></i>Home
+            <% end %>
         </li>
          <li>
-          <%= link_to "About", '/home/about' %>
+          <%= link_to "/home/about",class:"nav-link text-light" do %>
+           <i class="fa-solid fa-link"></i>About
+            <% end %>
         </li>
         <li>
-          <%= link_to "Sign up", new_user_registration_path %>
+          <%= link_to  new_user_registration_path, class:"nav-link text-light" do %>
+           <i class="fa-solid fa-user-plus"></i>Sign up
+          <% end %>
         </li>
         <li>
-          <%= link_to "Log in", new_user_session_path %>
+          <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+          <i class="fa-solid fa-right-to-bracket"></i>Log in
+          <% end %>
         </li>
       <% end %>
-    </header>
+      
+       </ul>
+      </div>
+    </div>
+    </nav>
+   </header>
 
     <%= yield %>
   </body>

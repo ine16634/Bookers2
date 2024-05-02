@@ -1,3 +1,29 @@
+  <!-- ユーザーの詳細 -->
+  <h2>User info</h2>
+<div>
+  <%= image_tag @book.user.get_profile_image(100,100) %>
+  <table class="table">
+   <tbody><tr></tr>
+    <tr>
+      <th>name</th>
+      <th><%= @book.user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= @book.user.profile %></th>
+    </tr>
+    </tbody></table>
+</div>
+<div>
+    <%= link_to  edit_user_path(@book.user.id)  ,class:"btn btn-outline-secondary btn-block" do %>
+    <i class="fa-solid fa-user-gear"></i></i>
+    <% end %>
+</div>
+<div>
+    
+<%= render 'new' %>
+
+
 <h2>Book detail</h2>
 <div class="Bookdetail-wrap">
   <table class="table-box">

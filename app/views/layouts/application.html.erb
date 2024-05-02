@@ -75,7 +75,9 @@
    </header>
 
   <main>
-   <p id="notice"></p>
+   <div>
+  <%= flash[:notice] %>
+   </div>
     <%= yield %>
   </main>
     

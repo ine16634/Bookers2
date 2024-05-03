@@ -1,5 +1,6 @@
-
-
+<div class="container px-5 px-sm-0">
+ <div class="row">
+  <div class="col-md-3">
   <!-- ユーザーの詳細 -->
   <h2>User info</h2>
 <div>
@@ -16,22 +17,21 @@
     </tr>
     </tbody></table>
 </div>
-<div>
+<div class="row">
     <%= link_to  edit_user_path(@user.id)  ,class:"btn btn-outline-secondary btn-block" do %>
     <i class="fa-solid fa-user-gear"></i></i>
     <% end %>
 </div>
 
 <%= render 'books/new' %>
-
+</div>
 
 
 <!-- ユーザーの投稿一覧 -->
+ <div class="col-md-8 offset-md-1">
+  <h1>Books</h1>
 
-<h1>Books</h1>
-
-<div class="book-wrap">
-  <table class="table-box">
+  <table class="table table-hover table-inverse">
     <thead>
       <tr>
         <th colspan="1"></th>
@@ -51,7 +51,9 @@
     <% end %>
     </tbody>
   </table>
-  </div>
+  
+ </div>
 
 
-
+</div>
+</div>

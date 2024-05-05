@@ -1,9 +1,13 @@
 class BooksController < ApplicationController
+  before_action :move_to_index, only: [:edit, :update]
+
   def index
+    @book = Book.new 
     @books = Book.all
   end
 
   def show
+    @new_book = Book.new 
     @book = Book.find(params[:id])
   end
 
@@ -12,15 +16,16 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    flash[:notice] = "You have created book successfully."
-    redirect_to book_path(book.id)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      flash[:notice] = "You have created book successfully."
+      redirect_to book_path(@book.id)
+    else
+      render :edit
+    end
   end
 
-  def new
 
-  end
 
   def create
     @book = Book.new(book_params)
@@ -42,6 +47,14 @@ class BooksController < ApplicationController
 
 
  private
+
+  def move_to_index
+    book = Book.find(params[:id])
+    unless book.user_id == current_user.id
+      redirect_to '/books'
+    end
+  end
+
 
   def book_params
     params.require(:book).permit(:title, :body)

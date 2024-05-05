@@ -3,26 +3,8 @@
   <div class="col-md-3">
 
   <!-- ユーザーの詳細 -->
-   <h2>User info</h2>
-
-  <%= image_tag @book.user.get_profile_image(100,100) %>
-    <table class="table">
-     <tbody><tr></tr>
-      <tr>
-        <th>name</th>
-        <th><%= @book.user.name %></th>
-      </tr>
-      <tr>
-        <th>introduction</th>
-        <th><%= @book.user.introduction %></th>
-      </tr>
-     </tbody></table>
-
-    <%= link_to  edit_user_path(@book.user.id)  ,class:"btn btn-outline-secondary btn-block" do %>
-     <i class="fa-solid fa-user-gear"></i></i>
-    <% end %>
-
-  <%= render 'new' %>
+　<%= render 'books/myinfo', user: @book.user %>
+  <%= render 'new', book: @new_book  %>
 
   </div>
 
